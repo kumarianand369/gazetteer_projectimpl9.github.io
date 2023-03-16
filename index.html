@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Gazetteer</title>
+    <meta name="author" content="Khushi">
+    <meta name="description" content="Gazetteer Web Application">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="data/css/all.css">
+    <link rel="stylesheet" href="data/leaflet/dist/leaflet.css">
+    <link rel="stylesheet" href="data/Bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="data/css/leaflet.extra-markers.min.css">
+	<link rel="stylesheet" href="data/LeaflefExtraMarkers/dist/css/leaflet.extra-markers.min.css">
+    <link rel="stylesheet" href="data/css/MarkerCluster.css">
+    <link rel="stylesheet" href="data/css/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="data/css/easy-button.css">
+    <link rel="stylesheet" href="libs/css/style.css">
+  </head>
+
+  <body>
+  <!--Preloader-->
+  <div id="preloader"> 
+    <img src="libs/icons/preloader.gif" alt="preloader">
+   </div>
+  <!-- select tag for country -->
+  <form>
+	<div class="form-group">
+		<select id="country" name="country" class="form-control" ></select>
+		</select>
+	</div>
+  </form>
+  <!---Country Information-->
+  <div class="modal fade" id="infoModalScrollable">
+	<div class="modal-dialog modal-dialog-scrollable">
+	  <div class="modal-content btn" id="info">
+		  
+		<div class="modal-header row">
+		  <h4 class="modal-title" data-dismiss="modal">Country Information</h4>
+		  <i class="fas fa-window-close crossClose" data-dismiss="modal"></i>
+		</div>
+		   
+		<div class="modal-body ">
+		  <div class="row info-panel">                          
+			<table class="table table-blue table-stripped col-12 m-0">
+			  <thead>
+				<tr>
+				  <th>Country Name:</th>
+				  <th id="countryName"></th>			 
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>Continent:</td>
+				  <td id="continent"></td>
+				</tr>  
+				<tr>
+				  <td>Capital City:</td>
+				  <td id="capital1"></td>
+				</tr>
+				  
+				<tr>
+				  <td>Area:</td>
+				  <td id="area"></td>
+				</tr>
+				<tr>
+				  <td>Population:</td>
+				  <td id="population"></td>
+				</tr>
+				  <tr>
+					  <div id="wiki" class="col-12">
+					   <h2>Wikipedia: <span id="sumTitle"></span> </h2>
+						  <blockquote class="blockquote text-left">
+							<p id="summary"></p>
+								<footer class="blockquote-footer">
+									<cite title="Source Title"><a id="wikipediaUrl"></a></cite>
+								</footer>
+						  </blockquote>
+					   </div>
+				  </tr>         
+			  </tbody>
+			</table>
+
+		  </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary mp-0 modalClose" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+	
+
+ <!-- Images -->
+ <div class="modal fade" id="imagesModalScrollable" >
+	<div class="modal-dialog modal-dialog-scrollable">
+	  <div class="modal-content" id="img">
+		<div class="modal-header">
+		  <h4 class="modal-title" data-dismiss="modal">Images</h4>
+		  <i class="fas fa-window-close" data-dismiss="modal"></i>
+		</div>		  
+		<div class="modal-body"> 
+			<div id="countryImages">
+			</div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+        
+ <!-- Weather Impl -->
+   <div class="modal fade" id="weatherModalScrollable">
+	<div class="modal-dialog modal-dialog-scrollable">
+	  <div class="modal-content" id="weatherData">
+		<div class="modal-header">
+		  <h4 class="modal-title" data-dismiss="modal">Weather</h4>
+		  <i class="fas fa-window-close" data-dismiss="modal"></i>
+		</div>
+		<div class="modal-body">
+			<table class="table table-blue table-striped">
+			  <tbody id=weatherBody>
+				<tr>
+				  <th>
+				  <nav id="dayNav" class=".justify-content-center">
+					<a class="nav-link" id="day1" href="javascript:void(0)">Today</a>
+					<a class="nav-link" id="day2" href="javascript:void(0)">Tomorrow</a>
+				  </nav>
+				  </th> 
+				  <th>
+				  <nav>
+					<a class="nav-link" id="day3" href="javascript:void(0)"></a>
+					<a class="nav-link" id="day4" href="javascript:void(0)"></a>
+				  </nav>
+				  </th>
+				</tr>
+				<tr>
+				  <td>Temperature:</td>
+				  <td id="temp"></td>                                      
+				</tr>
+				<tr>
+				  <td id="weatherCell" class=".align-middle">Current Weather:</td>
+				  <td id="currentWeather"> <img id="weatherIcon" alt="weather icon" src=""></td> 
+				</tr>
+				<tr>
+				  <td>Sunrise:</td>
+				  <td id="sunrise"></td>
+				</tr>
+				<tr>
+				  <td>Sunset:</td>
+				  <td id="sunset"></td>
+				</tr>
+				<tr>
+				  <td>Humidity:</td>
+				  <td id="humidity"></td>
+				</tr>	                              
+			  </tbody>
+			</table>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+
+	
+
+ <!--covid information-->
+
+ <div class="modal fade" id="covidModalScrollable">
+	<div class="modal-dialog modal-dialog-scrollable ">
+	  <div class="modal-content" id="coviddata">
+		  
+		
+		<div class="modal-body " >
+		  <div class="row info-panel" >                          
+			<table class="table table-blue table-stripped">
+			  <thead>
+				 <th>
+					<h3>Covid Data - <span id="countryCovid"></span></h3>
+				 </th>
+			  </thead>
+			  <tbody  id="countryCovid">  
+				<tr>
+					<td>TotalConfirmed:</td>
+					<td id="countriesTotalConfirmed"></td>
+				  </tr> 
+				<tr>
+				  <td>Total Deaths:</td>
+				  <td id="countriesTotalDeaths"></td>
+				</tr>
+				<tr>
+				  <td>Total Recovered:</td>
+				  <td id="countriesTotalRecovered"></td>
+				</tr>
+				<tr>
+					<td>New Confirmed:</td>
+					<td id="countriesNewConfirmed"></td>
+				  </tr> 
+					
+				  <tr>
+					<td>New Deaths:</td>
+					<td id="countriesNewDeaths"></td>
+				  </tr>
+				  <tr>
+					<td>New Recovered:</td>
+					<td id="countriesNewRecovered"></td>
+				  </tr>
+
+			  </tbody>
+			</table>
+
+		  </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary mp-0 modalClose" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+	
+<!-- News -->
+<div class="modal fade" id="newsModalScrollable">
+	<div class="modal-dialog modal-dialog-scrollable">
+	  <div class="modal-content" id="newsData">
+		<div class="modal-header">
+		  <h4 class="modal-title" data-dismiss="modal">News</h4>
+		  <i class="fas fa-window-close" data-dismiss="modal"></i>
+		</div>
+		<div class="modal-body">
+		  <div class="row" >
+			<table class="table table-dark table-stripped" id="tableNews">
+			  <thead>
+				<tr>
+				  <th>
+					  <h3>Breaking News - <span id="newsCountry"></span>
+					  </h3>
+				</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+					<td>
+					<button id="nextArticle">UpComing Headlines</button>
+				   </td>
+				</tr>
+				<tr>
+				  <th id="articleTitle"></th>
+				</tr>
+                <tr>
+				 <td>ArticleSource: <span id="articleSource"></span></td>
+				  </tr>
+				<tr>
+				  <td>Author: <span id="articleAuthor"></span></td>
+				</tr>
+				<tr >
+				  <td>Published on: <span id="publishedAt"></span></td>
+				</tr>
+			  </tbody>
+			</table>
+		  </div>
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary modalClose" data-dismiss="modal">Close</button>
+		</div>
+	  </div>
+	</div>
+  </div>        
+              
+
+
+ <!-- map -->
+ <div id="map"></div>
+ <script src="libs/js/jquery-3.6.0.min.js"></script> 
+     
+<!-- scripts -->
+    <script src="data/Bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="data/Bootstrap/dist/js/bootstrap.bundle.js"></script> 
+    <script src="data/leaflet/dist/leaflet.js"></script>
+    <script src="data/dist/leaflet.markercluster.js"></script>  
+	<script src="data/js/leaflet.extra-markers.min.js"></script>
+    <script src="data/LeaflefExtraMarkers/dist/js/leaflet.extra-markers.min.js"></script>
+    <script src="data/leaflet/dist/leaflet-providers.js"></script>
+    <script src="moment/moment.js"></script>  
+    <script src="data/js/easy-button.js"></script>
+    <script src="https://kit.fontawesome.com/be8d23ca96.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/2c55ed071b.js" crossorigin="anonymous"></script>	
+    <script src="libs/js/app.js"></script>
+
+  </body>
+ 
+</html>

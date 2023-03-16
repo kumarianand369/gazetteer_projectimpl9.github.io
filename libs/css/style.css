@@ -1,0 +1,206 @@
+/* PreLoader-*/
+
+#preloader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 50%;
+    bottom: 50%;
+    z-index: 999;
+    display: grid;
+    justify-content: center;
+      align-items: center;
+    width: 140px;
+    height: 140px;
+    margin: -65px 0 0 -65px;
+    border-radius: 50%;
+    border-top: 18px solid #cadb34ab;
+    
+    -webkit-animation: animate-preloader 2s linear infinite;
+    animation: animate-preloader 2s linear infinite;
+  }
+  
+  @-webkit-keyframes animate-preloader {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+  
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes animate-preloader {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+    
+  
+  }
+/*map*/
+#map { 
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    bottom: 0px;
+
+}
+/*==========================================*/
+
+.blue-color {
+    color:blue;
+}
+
+.red-color {
+    color:red;
+}
+.green-color {
+color:green;
+}
+
+.orange-color {
+color:orange;
+}
+
+.brown-color {
+ color:brown;
+}
+
+/*==========================================*/
+h1 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: inline;
+    margin: 0;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-color: lightgray;
+}
+.form-group {
+	width: 200px;
+	min-width: 50px;
+	max-width: 200px;
+	top: 1vw;
+	margin: 0 auto;
+	z-index: 900;
+	position: relative;
+	text-align: center;
+}
+/*=========country info=============================*/
+
+#wiki{
+    background-color:#03ac13;
+}
+#info{
+    background-color:#87CEEB;
+}
+.blockquote-footer{
+    text-align: center;
+}
+
+
+.sourced{
+    color:#03ac13;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1em;
+
+}
+#summary{
+    font-size:small; 
+    padding:10px;
+} 
+
+/*========Images=======*/
+#img{
+    background-color:#87CEEB;
+   
+}
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
+/*--------Country images------*/
+.countryImages{
+    width: 700px;
+}
+/*========weather=======*/
+
+#weatherData{
+    background-color:#87CEEB;
+}
+
+/*========covid=======*/
+#coviddata{
+    background-color:#87CEEB;
+}
+
+/*========news=======*/
+#newsData{
+    background-color:#87CEEB;
+}
+#tableNews{
+    color: palegreen;
+}
+#sourcedCell{
+    width: 80%;
+    word-break: break-all;
+    color: aqua;
+}
+#nextArticle{
+    background-color: #87CEEB;
+    color: black;
+}
+#articleUrl{
+    color:olive;
+}
+
+
+
+#contentCell{
+    text-align: left;   
+ }
+
+ /*---=====News======-----*/ 
+#articleImg{
+    float: right; 
+    width:150px;
+}
+.articleBtn{
+    display: inline-block;
+    width: 50%;
+}
+/*--------//Leaflet Zoom Buttons------*/
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    font-size: 35px;
+}
+
+.map-zoom-out-btn, .search-btn {
+    background-color: #0072B5;
+    color: #FFF;
+    padding: 10px 35px;
+    border: none;
+    font-size: 17px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.select-dropdown {
+    display: inline-block;
+    margin: 0 15px 0 0;
+    padding: 10px 35px;
+    border: 1px solid #AAA;
+    font: inherit;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    background: #FFF;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: right 15px top 1em, right 10px top 1em;
+    background-size: 5px 5px, 5px 5px;
+}
+

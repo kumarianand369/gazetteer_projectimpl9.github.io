@@ -1,0 +1,274 @@
+html, body
+{
+    height: 100%;
+}
+
+
+/* nav bar */
+
+#navbar {
+  position: absolute;
+  justify-content: center;
+  width: 100%;
+  z-index: 999999;
+}
+
+#countryList {
+  max-height: calc(100vh - 50px);
+  overflow-y: auto;
+}
+
+#loading-icon {
+  float: left;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+#selectedCountry {
+  max-height: 100%;
+  min-width: 5rem;
+}
+
+/* Map */
+
+#map
+{
+    width: 100vw;
+    height: 100vh;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* Marker cluster icon*/
+.marker-cluster div {
+  background-color: rgb(255, 212, 71);
+}
+
+.marker-cluster-small div {
+  background-color: rgb(0, 168, 150);
+}
+
+/* Buttons */
+
+@media screen and (max-width:275px) {
+  .leaflet-control-container a.leaflet-control-zoom-in {
+    margin-top: 50px;
+  }
+
+  div.leaflet-control-zoom.leaflet-bar.leaflet-control {
+    border: none;
+  }
+}
+
+#general-info-button {
+  background-color: rgb(49, 54, 56);
+  color: white;
+}
+
+#weather-button {
+  background-color: rgb(0, 121, 145);
+  color: white;
+}
+
+#holidays-button {
+  background-color: rgb(244, 184, 96);
+  color: white;
+}
+
+#news-button {
+  background-color: rgb(141, 8, 1);
+  color: white;
+}
+
+#covid-button {
+  background-color: rgb(247, 135, 100);
+  color: white;
+}
+
+#image-button {
+  background-color: rgb(106, 153, 78);
+  color: white;
+}
+
+#webcam-button {
+  background-color: rgb(31, 39, 27);
+  color: white;
+}
+
+#border-button {
+  background-color: rgb(183, 150, 172);
+  color: white;
+
+}
+
+
+/* Modals */
+
+.modal-body {
+  padding: 0;
+}
+
+div.modal-content {
+  border: none;
+}
+
+/* contains title and subheading or flag*/
+.heading-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+h5.modal-title {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.sub-heading {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.holidays-table-heading th{
+  padding: 1rem;
+}
+
+td i {
+  margin: 0 1rem;
+  color: rgb(51, 101, 138);
+}
+
+td.text-end {
+  padding-right: 1rem;
+  margin-right: 1rem;
+}
+
+/* holidays table */
+#holiday-table td {
+  padding: 1rem;
+}
+
+
+/* weather modal */
+
+.weather-color {
+  background-image: linear-gradient(to right, rgb(92, 192, 235) , rgb(16, 94, 127));
+  color: white;
+}
+
+#today {
+  padding: 0 0 0 16px;
+}
+
+.weather-description {
+  font-size: 1.3rem;
+}
+
+.temperature {
+  font-size: 3rem;
+}
+
+/* news modal */
+.card {
+  margin: 1rem auto 2rem auto;
+  width: 100%;
+}
+
+/* unsplash images modal */
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  max-height: 300px;
+  overflow:hidden;
+}
+
+
+/* popups */
+
+.leaflet-popup-content-wrapper {
+  width: 320px;
+}
+
+.leaflet-popup-content img {
+  float: left;
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.leaflet-popup-content p {
+  margin-top: 0;
+}
+
+.leaflet-popup-content a:link {
+  color: rgb(60, 140, 199);
+}
+
+.leaflet-popup-content .webcam-popup embed {
+  max-width: 100%;
+  float: none;
+}
+
+.leaflet-popup-content .webcam-popup img {
+  max-width: 100%;
+  float: none;
+}
+
+.webcam-popup h3 {
+  font-size: 1rem;
+}
+
+
+
+
+/* Preloader */
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #fff;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #f2f2f2;
+  border-top: 6px solid #56829e ;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: animate-preloader 1s linear infinite;
+  animation: animate-preloader 1s linear infinite;
+}
+
+@-webkit-keyframes animate-preloader {
+  0% {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  }
+  100% {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-preloader {
+  0% {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  }
+  100% {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+  }
+}
